@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { PlusCircleIcon } from "@heroicons/react/24/outline"; // Importing the Heroicons plus-circle icon
+import TaskModal from "./components/taskModal"; // Import the TaskModal component
 
 export default function DashboardPage() {
   // Define Task type inline
@@ -12,7 +13,7 @@ export default function DashboardPage() {
     description: string;
     status: string;
     priority: string;
-    dueDate: string; // ISO 8601 string format for date
+    dueDate: string;
     user: string;
     createdAt: string;
     updatedAt: string;
@@ -21,6 +22,8 @@ export default function DashboardPage() {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false); // State to manage modal visibility
+  const [selectedTask, setSelectedTask] = useState<Task | null>(null); // Selected task for modal
   const router = useRouter();
 
   // Fetch tasks
@@ -64,14 +67,23 @@ export default function DashboardPage() {
   }, []);
 
   const handleCreateTaskClick = () => {
-    // Navigate to the create task page when clicking the link
     router.push("/create-task");
+  };
+
+  const openModal = (task: Task) => {
+    setSelectedTask(task);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedTask(null);
   };
 
   return (
     <div className="p-6 bg-gray-100 min-h-screen">
       <div className="flex items-center justify-between mb-6">
-        <h2 className="text-3xl font-bold">Your Tasks</h2> {/* Removed color here */}
+        <h2 className="text-3xl font-bold">Keep Track of Your <span className="text-indigo-600">Tasks</span> Here!</h2>
         <Link
           href="/create-task"
           className="bg-indigo-600 text-white p-3 rounded-full hover:bg-indigo-700 transition-colors"
@@ -100,9 +112,10 @@ export default function DashboardPage() {
             return (
               <div
                 key={task._id}
-                className="bg-white p-6 border border-gray-200 rounded-lg shadow-lg hover:shadow-xl transition-shadow"
+                onClick={() => openModal(task)} // Open modal on task click
+                className="bg-white p-6 border border-gray-200 rounded-lg shadow-lg hover:shadow-xl transition-shadow cursor-pointer"
               >
-                <h3 className="text-2xl font-semibold">{task.title}</h3> {/* Removed color here */}
+                <h3 className="text-2xl font-semibold">{task.title}</h3>
                 <p className="text-sm text-gray-600 mt-2">{task.description}</p>
                 <div className="flex justify-between mt-4">
                   <span
@@ -135,6 +148,15 @@ export default function DashboardPage() {
             );
           })}
         </div>
+      )}
+
+      {/* Task Modal */}
+      {isModalOpen && selectedTask && (
+        <TaskModal task={selectedTask} onClose={closeModal} onUpdate={function (): void {
+          throw new Error("Function not implemented.");
+        } } onDelete={function (): void {
+          throw new Error("Function not implemented.");
+        } } />
       )}
     </div>
   );
