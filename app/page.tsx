@@ -39,7 +39,7 @@ export default function DashboardPage() {
 
       const response = await fetch("http://localhost:5000/api/tasks", {
         headers: {
-          "Authorization": `Bearer ${token}`,
+          Authorization: `Bearer ${token}`,
         },
       });
 
@@ -80,10 +80,41 @@ export default function DashboardPage() {
     setSelectedTask(null);
   };
 
+  // Delete task logic
+  const handleDeleteTask = async (taskId: string) => {
+    try {
+      const token = localStorage.getItem("token");
+
+      if (!token) {
+        setError("You must be logged in to delete tasks.");
+        return;
+      }
+
+      const response = await fetch(`http://localhost:5000/api/tasks/${taskId}`, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to delete task");
+      }
+
+      // Update local state by filtering out the deleted task
+      setTasks((prevTasks) => prevTasks.filter((task) => task._id !== taskId));
+      closeModal(); // Close the modal after deleting the task
+    } catch (error) {
+      setError("There was an issue deleting the task.");
+    }
+  };
+
   return (
     <div className="p-6 bg-gray-100 min-h-screen">
       <div className="flex items-center justify-between mb-6">
-        <h2 className="text-3xl font-bold">Keep Track of Your <span className="text-indigo-600">Tasks</span> Here!</h2>
+        <h2 className="text-3xl font-bold">
+          Keep Track of Your <span className="text-indigo-600">Tasks</span> Here!
+        </h2>
         <Link
           href="/create-task"
           className="bg-indigo-600 text-white p-3 rounded-full hover:bg-indigo-700 transition-colors"
@@ -98,7 +129,9 @@ export default function DashboardPage() {
         <div className="text-lg text-gray-600">Loading tasks...</div>
       ) : tasks.length === 0 ? (
         <div className="text-center mt-8">
-          <p className="text-lg text-gray-700 mb-4">No tasks available. Start by creating a new task.</p>
+          <p className="text-lg text-gray-700 mb-4">
+            No tasks available. Start by creating a new task.
+          </p>
           <Link
             href="/create-task"
             className="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition-colors"
@@ -152,11 +185,7 @@ export default function DashboardPage() {
 
       {/* Task Modal */}
       {isModalOpen && selectedTask && (
-        <TaskModal task={selectedTask} onClose={closeModal} onUpdate={function (): void {
-          throw new Error("Function not implemented.");
-        } } onDelete={function (): void {
-          throw new Error("Function not implemented.");
-        } } />
+        <TaskModal task={selectedTask} onClose={closeModal} onDelete={handleDeleteTask} />
       )}
     </div>
   );
