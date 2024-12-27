@@ -43,7 +43,7 @@ export default function CreateTaskPage() {
       };
 
       // Make the POST request to create the task
-      const response = await fetch("http://localhost:5000/api/tasks", {
+      const response = await fetch("https://task-management-api-52oc.onrender.com/api/tasks", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

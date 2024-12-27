@@ -39,7 +39,7 @@ const UpdateTaskPage = () => {
           return;
         }
 
-        const response = await fetch(`http://localhost:5000/api/tasks/${taskId}`, {
+        const response = await fetch(`https://task-management-api-52oc.onrender.com/api/tasks/${taskId}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -88,7 +88,7 @@ const UpdateTaskPage = () => {
         return;
       }
 
-      const response = await fetch(`http://localhost:5000/api/tasks/${taskId}`, {
+      const response = await fetch(`https://task-management-api-52oc.onrender.com/api/tasks/${taskId}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
