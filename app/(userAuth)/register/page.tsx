@@ -98,18 +98,18 @@ export default function Register() {
         className="bg-white shadow-lg p-8 rounded-lg w-full max-w-md"
         onSubmit={handleSubmit}
       >
-        <h2 className="text-2xl font-bold text-center mb-6">Register</h2>
+        <h2 className="text-2xl text-black font-bold text-center mb-6">Register</h2>
 
         {/* Name Field */}
         <div className="mb-4">
-          <label htmlFor="name" className="block font-medium mb-2">
+          <label htmlFor="name" className="block text-gray-600 font-medium mb-2">
             Name
           </label>
           <input
             type="text"
             id="name"
             name="name"
-            className={`w-full p-2 border ${
+            className={`w-full text-black p-2 border ${
               errors.name ? "border-red-500" : "border-gray-300"
             } rounded-md`}
             value={formData.name}
@@ -122,14 +122,14 @@ export default function Register() {
 
         {/* Email Field */}
         <div className="mb-4">
-          <label htmlFor="email" className="block font-medium mb-2">
+          <label htmlFor="email" className="block text-gray-600 font-medium mb-2">
             Email
           </label>
           <input
             type="email"
             id="email"
             name="email"
-            className={`w-full p-2 border ${
+            className={`w-full text-black p-2 border ${
               errors.email ? "border-red-500" : "border-gray-300"
             } rounded-md`}
             value={formData.email}
@@ -142,14 +142,14 @@ export default function Register() {
 
         {/* Password Field */}
         <div className="mb-4">
-          <label htmlFor="password" className="block font-medium mb-2">
+          <label htmlFor="password" className="block text-gray-600 font-medium mb-2">
             Password
           </label>
           <input
             type="password"
             id="password"
             name="password"
-            className={`w-full p-2 border ${
+            className={`w-full text-black p-2 border ${
               errors.password ? "border-red-500" : "border-gray-300"
             } rounded-md`}
             value={formData.password}
