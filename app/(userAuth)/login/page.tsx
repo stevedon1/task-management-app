@@ -36,6 +36,7 @@ export default function LoginPage() {
       router.push("/");
     } catch (err) {
       setError("Invalid email or password. Please try again.");
+      console.log(err)
     }
   };
 
@@ -70,7 +71,7 @@ export default function LoginPage() {
 
       {/* Link to the registration page */}
       <p className="text-center mt-4">
-        Don't have an account?{" "}
+        Don't have an account?
         <Link href="/register" className="text-blue-500 hover:underline">
           Sign Up
         </Link>

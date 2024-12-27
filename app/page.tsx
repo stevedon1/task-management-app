@@ -62,6 +62,7 @@ export default function DashboardPage() {
       }
     } catch (error) {
       setError("There was an issue fetching tasks.");
+      console.log(error)
     } finally {
       setIsLoading(false);
     }
@@ -72,9 +73,6 @@ export default function DashboardPage() {
     fetchTasks();
   }, []);
 
-  const handleCreateTaskClick = () => {
-    router.push("/create-task");
-  };
 
   const openModal = (task: Task) => {
     setSelectedTask(task);
@@ -112,6 +110,7 @@ export default function DashboardPage() {
       closeModal(); // Close the modal after deleting the task
     } catch (error) {
       setError("There was an issue deleting the task.");
+      console.log(error)
     }
   };
 
