@@ -82,7 +82,7 @@ export default function CreateTaskPage() {
             required
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className="w-full p-2 border rounded"
+            className="w-full text-black p-2 border rounded"
             placeholder="Task Title"
           />
         </div>
@@ -96,7 +96,7 @@ export default function CreateTaskPage() {
             required
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-            className="w-full p-2 border rounded"
+            className="w-full text-black p-2 border rounded"
             placeholder="Task Description"
             rows={4}
           />
@@ -111,7 +111,7 @@ export default function CreateTaskPage() {
               id="status"
               value={status}
               onChange={(e) => setStatus(e.target.value)}
-              className="w-full p-2 border rounded"
+              className="w-full text-black p-2 border rounded"
             >
               <option value="in-progress">In Progress</option>
               <option value="completed">Completed</option>
@@ -127,7 +127,7 @@ export default function CreateTaskPage() {
               id="priority"
               value={priority}
               onChange={(e) => setPriority(e.target.value)}
-              className="w-full p-2 border rounded"
+              className="w-full text-black p-2 border rounded"
             >
               <option value="low">Low</option>
               <option value="medium">Medium</option>
@@ -146,7 +146,7 @@ export default function CreateTaskPage() {
             required
             value={dueDate}
             onChange={(e) => setDueDate(e.target.value)}
-            className="w-full p-2 border rounded"
+            className="w-full text-black p-2 border rounded"
           />
         </div>
 
