@@ -72,8 +72,8 @@ export default function LoginPage() {
       {/* Link to the registration page */}
       <p className="text-center mt-4">
         Dont have an account?
-        <Link href="/register" className="text-blue-500 hover:underline">
-          Sign Up
+        <Link href="/register" className="text-blue-500 text-xl hover:underline">
+            Sign Up
         </Link>
       </p>
     </div>
