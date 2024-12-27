@@ -123,7 +123,7 @@ const UpdateTaskPage = () => {
         <label className="block text-sm font-medium text-gray-700">Title</label>
         <input
           type="text"
-          className="w-full p-2 border rounded-md"
+          className="w-full text-black p-2 border rounded-md"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
@@ -131,7 +131,7 @@ const UpdateTaskPage = () => {
       <div className="mb-4">
         <label className="block text-sm font-medium text-gray-700">Description</label>
         <textarea
-          className="w-full p-2 border rounded-md"
+          className="w-full text-black p-2 border rounded-md"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
@@ -139,7 +139,7 @@ const UpdateTaskPage = () => {
       <div className="mb-4">
         <label className="block text-sm font-medium text-gray-700">Status</label>
         <select
-          className="w-full p-2 border rounded-md"
+          className="w-full text-black p-2 border rounded-md"
           value={status}
           onChange={(e) => setStatus(e.target.value)}
         >
@@ -151,7 +151,7 @@ const UpdateTaskPage = () => {
       <div className="mb-4">
         <label className="block text-sm font-medium text-gray-700">Priority</label>
         <select
-          className="w-full p-2 border rounded-md"
+          className="w-full text-black p-2 border rounded-md"
           value={priority}
           onChange={(e) => setPriority(e.target.value)}
         >
@@ -164,7 +164,7 @@ const UpdateTaskPage = () => {
         <label className="block text-sm font-medium text-gray-700">Due Date</label>
         <input
           type="date"
-          className="w-full p-2 border rounded-md"
+          className="w-full text-black p-2 border rounded-md"
           value={dueDate}
           onChange={(e) => setDueDate(e.target.value)}
         />

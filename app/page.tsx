@@ -117,7 +117,7 @@ export default function DashboardPage() {
   return (
     <div className="p-6 bg-gray-100 min-h-screen">
       <div className="flex items-center justify-between mb-6">
-        <h2 className="text-3xl font-bold">
+        <h2 className="text-3xl text-black font-bold">
           Keep Track of Your <span className="text-indigo-600">Tasks</span> Here!
         </h2>
         <Link
@@ -153,7 +153,7 @@ export default function DashboardPage() {
                 onClick={() => openModal(task)} // Open modal on task click
                 className="bg-white p-6 border border-gray-200 rounded-lg shadow-lg hover:shadow-xl transition-shadow cursor-pointer"
               >
-                <h3 className="text-2xl font-semibold">{task.title}</h3>
+                <h3 className="text-2xl text-black font-semibold">{task.title}</h3>
                 <p className="text-sm text-gray-600 mt-2">{task.description}</p>
                 <div className="flex justify-between mt-4">
                   <span
