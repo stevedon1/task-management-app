@@ -25,7 +25,13 @@ export default function DashboardPage() {
   const [isModalOpen, setIsModalOpen] = useState(false); // State to manage modal visibility
   const [selectedTask, setSelectedTask] = useState<Task | null>(null); // Selected task for modal
   const router = useRouter();
-
+  
+  useEffect(()=>{
+    const token = localStorage.getItem('token')
+    if(!token){
+      router.push('/login')
+    }
+  },[router])
   // Fetch tasks
   const fetchTasks = async () => {
     setIsLoading(true);

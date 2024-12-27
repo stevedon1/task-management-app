@@ -45,11 +45,11 @@ export default function Register() {
       newErrors.password = "Password must be at least 8 characters long.";
     }
 
-    if (!formData.confirmPassword) {
-      newErrors.confirmPassword = "Please confirm your password.";
-    } else if (formData.confirmPassword !== formData.password) {
-      newErrors.confirmPassword = "Passwords do not match.";
-    }
+    // if (!formData.confirmPassword) {
+    //   newErrors.confirmPassword = "Please confirm your password.";
+    // } else if (formData.confirmPassword !== formData.password) {
+    //   newErrors.confirmPassword = "Passwords do not match.";
+    // }
 
     setErrors(newErrors);
 
@@ -64,7 +64,7 @@ export default function Register() {
 
     // Send data to your backend API
     try {
-      const response = await fetch("http://localhost:5000/api/users/register", {
+      const response = await fetch("https://task-management-api-52oc.onrender.com/api/users/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -81,7 +81,7 @@ export default function Register() {
       }
 
       const data = await response.json();
-      alert("Registration successful!");
+      // alert("Registration successful!");
       console.log(data); // Handle the response as needed
 
       // Redirect to the homepage after successful registration
@@ -161,7 +161,7 @@ export default function Register() {
         </div>
 
         {/* Confirm Password Field */}
-        <div className="mb-6">
+        {/* <div className="mb-6">
           <label
             htmlFor="confirmPassword"
             className="block font-medium mb-2"
@@ -183,7 +183,7 @@ export default function Register() {
               {errors.confirmPassword}
             </p>
           )}
-        </div>
+        </div> */}
 
         {/* Submit Button */}
         <button
