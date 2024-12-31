@@ -59,8 +59,6 @@ const TaskModal: React.FC<TaskModalProps> = ({ task, onClose, onDelete }) => {
         <div className="text-sm text-gray-500 mb-4">
           <span>Due date: {new Date(task.dueDate).toLocaleDateString()}</span>
         </div>
-
-        {/* Action Buttons */}
         <div className="mt-4 flex justify-between space-x-4">
           <button
             onClick={() => router.push(`/update-task/${task._id}`)} // Redirect to update page
@@ -69,7 +67,7 @@ const TaskModal: React.FC<TaskModalProps> = ({ task, onClose, onDelete }) => {
             Update
           </button>
           <button
-            onClick={() => onDelete(task._id)} // Trigger delete action
+            onClick={() => onDelete(task._id)}
             className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors"
           >
             Delete

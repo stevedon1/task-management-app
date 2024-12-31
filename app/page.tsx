@@ -104,8 +104,6 @@ export default function DashboardPage() {
       if (!response.ok) {
         throw new Error("Failed to delete task");
       }
-
-      // Update local state by filtering out the deleted task
       setTasks((prevTasks) => prevTasks.filter((task) => task._id !== taskId));
       closeModal(); // Close the modal after deleting the task
     } catch (error) {
